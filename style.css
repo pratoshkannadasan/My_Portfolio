@@ -1,67 +1,61 @@
-/* =========================================================
-   Premium theme: glassy, elegant, accessible
-   - keeps your HTML structure intact
-   - adds dark mode, subtle motion, pro spacing
-   ========================================================= */
-
-/* Root variables for light theme */
-:root{
-  /* Light */
-  --bg: #f6f7fb;
-  --fg: #0f172a;
+/* Force Light Mode */
+:root {
+  --bg: #f6f7fb; /* Light background */
+  --fg: #0f172a; /* Dark text color for contrast */
   --muted: #64748b;
-  --brand: #6d28d9;           /* royal violet */
-  --brand-2: #0ea5e9;         /* sky accent */
-  --card: #ffffff;
-  --line: #e5e7eb;
-  --ring: rgba(109,40,217,.22);
+  --brand: #6d28d9; /* Royal violet */
+  --brand-2: #0ea5e9; /* Sky accent */
+  --card: #ffffff; /* White background for cards */
+  --line: #e5e7eb; /* Light border color */
+  --ring: rgba(109, 40, 217, .22); /* Light ring effect */
 
   --radius: 16px;
   --radius-lg: 22px;
-  --shadow-1: 0 6px 28px rgba(2,8,23,.06);
-  --shadow-2: 0 20px 60px rgba(2,8,23,.12);
-  --shadow-soft: 0 1px 0 rgba(2,8,23,.06), 0 2px 10px rgba(2,8,23,.06);
+  --shadow-1: 0 6px 28px rgba(2, 8, 23, .06);
+  --shadow-2: 0 20px 60px rgba(2, 8, 23, .12);
+  --shadow-soft: 0 1px 0 rgba(2, 8, 23, .06), 0 2px 10px rgba(2, 8, 23, .06);
 
   --font: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-
-  /* Motion */
-  --ease: cubic-bezier(.2,.7,.2,1);
-  --speed-1: 140ms;
-  --speed-2: 260ms;
 }
 
-/* Dark theme override */
+/* Remove the dark mode override */
 @media (prefers-color-scheme: dark) {
-  :root{
-    --bg: #0b1220;
-    --fg: #e5e7eb;
-    --muted: #9aa3b2;
-    --brand: #a78bfa;
-    --brand-2: #22d3ee;
-    --card: #0f1629;
-    --line: #1f2937;
-    --ring: rgba(167,139,250,.25);
-    --shadow-1: 0 6px 28px rgba(0,0,0,.35);
-    --shadow-2: 0 30px 80px rgba(0,0,0,.45);
-    --shadow-soft: 0 1px 0 rgba(255,255,255,.03), 0 2px 12px rgba(0,0,0,.35);
-  }
+  /* We disable the dark mode by not defining the dark theme styles here */
 }
 
 /* Manual theme override from theme.js */
-:root[data-theme="light"] { color-scheme: light; }
-:root[data-theme="dark"]  { color-scheme: dark; }
+:root[data-theme="light"] {
+  color-scheme: light;
+}
 
 /* Reset / base */
-* { box-sizing: border-box }
-html, body {
-  margin: 0; padding: 0; font-family: var(--font);
-  color: var(--fg); background: radial-gradient(1200px 800px at 20% -10%, rgba(109,40,217,.10), transparent 60%),
-                      radial-gradient(1000px 600px at 120% 10%, rgba(14,165,233,.10), transparent 50%),
-                      var(--bg);
+* {
+  box-sizing: border-box;
 }
-a { color: inherit; text-decoration: none }
-img { max-width: 100%; display: block }
-input, select, button { font: inherit }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  color: var(--fg);
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(109, 40, 217, .10), transparent 60%),
+              radial-gradient(1000px 600px at 120% 10%, rgba(14, 165, 233, .10), transparent 50%),
+              var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, select, button {
+  font: inherit;
+}
 
 /* Focus styles */
 :focus-visible {
@@ -69,15 +63,23 @@ input, select, button { font: inherit }
   outline-offset: 2px;
 }
 
-/* ===== Sidebar ===== */
-.sidebar{
-  position: fixed; inset: 0 auto 0 0; width: 280px;
-  background: rgba(255,255,255,.65);
+/* Sidebar styling and others remain unchanged */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 280px;
+  background: rgba(255, 255, 255, .65);
   border-right: 1px solid var(--line);
   backdrop-filter: saturate(160%) blur(12px);
   padding: 18px 16px;
-  display: flex; flex-direction: column; gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
+/* Keep the other styles intact */
+
+
 :root[data-theme="dark"] .sidebar{
   background: rgba(15,22,41,.55);
 }
