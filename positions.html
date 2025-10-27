@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Positions • Pratosh</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* --- Reusable Page Header Style (Dark Gradient Banner) --- */
+.page-header {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f766e);
+  color: #fff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 6px 25px rgba(15, 23, 42, 0.4);
+  transition: background 0.8s ease;
+}
+
+/* Slight animated gradient shimmer on hover */
+.page-header:hover {
+  background: linear-gradient(135deg, #1e3a8a, #0f766e, #1e293b);
+}
+
+/* Title and subtitle spacing */
+.page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header h1 i {
+  font-size: 1.3rem;
+  color: #38bdf8;
+}
+
+.page-header p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  max-width: 60ch;
+  margin: 0;
+}
+
+    .chooser-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px 60px;
+}
+
+.grid-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* 🔥 Bigger, bolder boxes */
+.choice {
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, #f3f6ff);
+  border: 1px solid rgba(37, 86, 240, 0.15);
+  border-radius: 24px;
+  padding: 40px 30px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 12px 35px rgba(37, 86, 240, 0.12);
+  text-decoration: none;
+  color: #111827;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.choice:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(37, 86, 240, 0.25);
+  background: linear-gradient(145deg, #eef3ff, #ffffff);
+}
+
+/* ✨ Add a subtle glowing gradient border on hover */
+.choice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, #2556f0, #22c1c3);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.choice:hover::after {
+  opacity: 1;
+}
+
+/* Header text and icon */
+.choice h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.choice p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Modern glassy icon */
+.icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2556f0, #22c1c3);
+  color: white;
+  font-size: 1.7rem;
+  box-shadow: 0 10px 25px rgba(37, 86, 240, 0.3);
+  transition: transform 0.25s ease;
+}
+.choice:hover .icon {
+  transform: rotate(8deg) scale(1.1);
+}
+
+@media (max-width: 720px) {
+  .choice {
+    padding: 30px 20px;
+    min-height: 180px;
+  }
+  .choice h3 {
+    font-size: 1.3rem;
+  }
+  .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html">PK</a>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="awards.html"><i class="fa-solid fa-trophy"></i> Awards</a>
+      <a class="active" href="positions.html"><i class="fa-solid fa-users-gear"></i> Positions</a>
+      <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="skills.html"><i class="fa-solid fa-brain"></i> Skills</a>
+      <a href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="Pratosh_Kannadasan_Resume.pdf" class="btn primary" download>💼 Download CV</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="page-header">
+      <h1><i class="fa-solid fa-users-gear"></i> Positions</h1>
+      <p class="meta">Do click on Leadership roles, to deep dive into subcategories.</p>
+    </header>
+
+    <section class="chooser-wrap">
+      <div class="grid-choices">
+        <a class="choice" href="positions-timeline.html?cat=higher">
+          <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+          <h3>Higher Council</h3>
+          <p>Chairperson, Deputy Chairperson, Treasurer, etc.</p>
+        </a>
+        <a class="choice" href="positions-timeline.html?cat=excos">
+          <div class="icon"><i class="fa-solid fa-people-group"></i></div>
+          <h3>Excos</h3>
+          <p>Executive Committee & Heads of Bureaus.</p>
+        </a>
+        <a class="choice" href="positions-timeline.html?cat=subordinates">
+          <div class="icon"><i class="fa-solid fa-users"></i></div>
+          <h3>Subordinates</h3>
+          <p>Assistants, members, coordinators.</p>
+        </a>
+        <a class="choice" href="positions-timeline.html?cat=facilitator">
+          <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3>Facilitators</h3>
+          <p>Mentors, trainers, program facilitators.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer"><p>© 2025 Pratosh Kannadasan</p></footer>
+  </main>
+</body>
+</html>

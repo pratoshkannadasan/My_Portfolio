@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects • Pratosh</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script defer src="theme.js"></script>
+
+  <style>
+    /* --- Reusable Page Header Style (Dark Gradient Banner) --- */
+.page-header {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f766e);
+  color: #fff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 6px 25px rgba(15, 23, 42, 0.4);
+  transition: background 0.8s ease;
+}
+
+/* Slight animated gradient shimmer on hover */
+.page-header:hover {
+  background: linear-gradient(135deg, #1e3a8a, #0f766e, #1e293b);
+}
+
+/* Title and subtitle spacing */
+.page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header h1 i {
+  font-size: 1.3rem;
+  color: #38bdf8;
+}
+
+.page-header p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  max-width: 60ch;
+  margin: 0;
+}
+
+    /* Toolbar and Filters */
+    .toolbar { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap }
+    .input {
+      padding:.55rem .9rem; border:1px solid var(--line,#ddd);
+      border-radius:10px; outline:none; font-size:.9rem;
+    }
+    .input:focus { border-color:#2556f0; box-shadow:0 0 0 3px rgba(37,86,240,.15); }
+    .filter-chip {
+      padding:.5rem .9rem; border:1px solid #ddd; border-radius:999px;
+      background:#fff; cursor:pointer; transition:all .18s ease;
+    }
+    .filter-chip.active {
+      background:linear-gradient(135deg,#2556f0,#22c1c3); color:white;
+      border:none; box-shadow:0 4px 12px rgba(34,193,195,.4);
+    }
+
+    /* Section Layout */
+    .section { max-width:1180px; margin:0 auto 40px; padding:0 8px; }
+    .section h2 { margin-bottom:1rem; font-size:1.6rem; }
+
+    .list-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:20px;
+      align-items:stretch;
+    }
+
+    /* Project Cards */
+    .project-card {
+      display:flex; flex-direction:column; justify-content:space-between;
+      background:var(--card,#fff);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:16px;
+      padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,0.05);
+      transition:all .25s ease;
+      height:100%;
+    }
+    .project-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 10px 25px rgba(37,86,240,0.25);
+      border-color:rgba(34,193,195,0.4);
+    }
+    .project-card .title {
+      display:flex; align-items:center; flex-wrap:wrap; gap:.5rem;
+      margin:0 0 .5rem; font-weight:800; font-size:1.1rem;
+    }
+    .project-card .desc {
+      flex:1 1 auto; color:#555; line-height:1.55; margin-bottom:1rem;
+    }
+    .pill-row { display:flex; flex-wrap:wrap; gap:.45rem }
+    .pill {
+      background:rgba(37,86,240,0.08); color:#2556f0;
+      border:1px solid rgba(37,86,240,0.15);
+      padding:.32rem .62rem; border-radius:999px; font-size:.8rem;
+      transition:all .18s ease;
+    }
+    .pill:hover {
+      background:linear-gradient(90deg,#2556f0,#22c1c3);
+      color:white; box-shadow:0 2px 10px rgba(37,86,240,.25);
+    }
+    .badge {
+      margin-left:.4rem; background:linear-gradient(180deg,#eef2ff,#e7ecff);
+      color:#2b3ca8; border:1px solid rgba(43,60,168,.14);
+      border-radius:10px; padding:2px 6px; font-size:0.8rem;
+    }
+    @media (max-width:720px){ .list-grid{grid-template-columns:1fr;gap:14px} }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a class="brand" href="index.html">PK</a>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="awards.html"><i class="fa-solid fa-trophy"></i> Awards</a>
+      <a href="positions.html"><i class="fa-solid fa-users-gear"></i> Club Positions</a>
+      <a class="active" href="projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="skills.html"><i class="fa-solid fa-brain"></i> Skills</a>
+      <a href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="Pratosh_Kannadasan_Resume.pdf" class="btn primary" download>💼 Download CV</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="content">
+    <header class="page-header">
+        <h1><i class="fa-solid fa-diagram-project"></i> Projects</h1>
+        <p>Selected work across AI, automation, analytics, and research.</p>
+      <div class="toolbar">
+        <input id="proj-search" class="input" placeholder="Search project, tech, or keyword…" />
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="ai">AI/ML</button>
+        <button class="filter-chip" data-filter="dashboard">Dashboards</button>
+        <button class="filter-chip" data-filter="web">Web App</button>
+      </div>
+    </header>
+
+    <!-- INTERN PROJECTS -->
+    <section class="section">
+      <h2>Intern Projects</h2>
+      <div class="list-grid">
+        <article class="project-card" data-tags="ai dashboard">
+          <h3 class="title"><i class="fa-solid fa-traffic-light"></i> Smart Traffic <span class="badge">2025</span></h3>
+          <p class="desc">An intelligent customer–agent matching framework that optimizes routing  and service quality in contact centre operations- FIlters through Language, expertise, and KPIs like CSAT and AHT.</p>
+          <div class="pill-row"><span class="pill">Algorithm</span><span class="pill">Routing</span><span class="pill">Python</span></div>
+        </article>
+
+        <article class="project-card" data-tags="nlp ai dashboard">
+          <h3 class="title"><i class="fa-solid fa-comments"></i> Few-shot Prompting in DSAT Scrubbing (QA) <span class="badge">2025</span></h3>
+          <p class="desc">Built an LLM-based framework for DSAT analysis using few-shot prompting to enhance QA automation accuracy.</p>
+          <div class="pill-row"><span class="pill">LLM</span><span class="pill">NLP</span><span class="pill">Python</span></div>
+        </article>
+
+        <article class="project-card" data-tags="ai nlp">
+          <h3 class="title"><i class="fa-solid fa-robot"></i> BERT-based ML Classifier for Multi-Label Categorization <span class="badge">2025</span></h3>
+          <p class="desc">Trained a BERT-based classifier for multi-intent categorization in service transcripts with REST API deployment.</p>
+          <div class="pill-row"><span class="pill">BERT</span><span class="pill">Transformers</span><span class="pill">FastAPI</span></div>
+        </article>
+
+        <article class="project-card" data-tags="dashboard ai">
+          <h3 class="title"><i class="fa-solid fa-chart-line"></i> QA Voice Monitoring Dashboard <span class="badge">2024</span></h3>
+          <p class="desc">Designed an interactive Python–Streamlit dashboard for speech analytics — tracking silence ratio, talk-over, and sentiment to support data-driven coaching decisions.</p>
+          <div class="pill-row"><span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Analytics</span></div>
+        </article>
+
+        <article class="project-card" data-tags="dashboard">
+          <h3 class="title"><i class="fa-solid fa-phone"></i> QA Call Monitoring Dashboard <span class="badge">2024</span></h3>
+          <p class="desc">Developed a Streamlit-based real-time dashboard visualizing QA call performance metrics, enabling supervisors to monitor compliance and identify coaching opportunities.</p>
+          <div class="pill-row"><span class="pill">Power BI</span><span class="pill">Visualization</span><span class="pill">KPI</span></div>
+        </article>
+
+        <article class="project-card" data-tags="dashboard">
+          <h3 class="title"><i class="fa-solid fa-user-tie"></i> Agent Performance Dashboard <span class="badge">2024</span></h3>
+          <p class="desc">Performance analytics tool benchmarking KPIs, SLA adherence, and call handling efficiency for coaching insights.</p>
+          <div class="pill-row"><span class="pill">Power BI</span><span class="pill">Analytics</span><span class="pill">Visualization</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE / ACADEMIC -->
+    <section class="section">
+      <h2>Open-Source & Academic</h2>
+      <div class="list-grid">
+        <article class="project-card" data-tags="ai">
+          <h3 class="title"><i class="fa-solid fa-face-smile"></i> Classroom Face Recognition Attendance <span class="badge">Python</span></h3>
+          <p class="desc">Face recognition-based attendance system ensuring real-time verification and anti-spoof security.</p>
+          <div class="pill-row"><span class="pill">OpenCV</span><span class="pill">FaceNet</span><span class="pill">Python</span></div>
+        </article>
+
+        <article class="project-card" data-tags="viz ai">
+          <h3 class="title"><i class="fa-solid fa-square-root-variable"></i> Linear Programming Solver & Visualizer <span class="badge">Python</span></h3>
+          <p class="desc">An interactive linear programming tool with graphical region plotting and real-time optimization output.</p>
+          <div class="pill-row"><span class="pill">Optimization</span><span class="pill">Matplotlib</span><span class="pill">NumPy</span></div>
+        </article>
+
+        <article class="project-card" data-tags="ai viz">
+          <h3 class="title"><i class="fa-solid fa-chart-area"></i> Stock Price Prediction System <span class="badge">Python</span></h3>
+          <p class="desc">ML model predicting real-time stock trends with feature engineering, backtesting, and alert automation.</p>
+          <div class="pill-row"><span class="pill">Scikit-learn</span><span class="pill">Time-Series</span><span class="pill">Pandas</span></div>
+        </article>
+
+        <article class="project-card" data-tags="viz dashboard">
+          <h3 class="title"><i class="fa-solid fa-virus-covid"></i> Covid-19 Data Analysis Dashboard <span class="badge">Python</span></h3>
+          <p class="desc">Global COVID-19 data visualization and analytics platform using Plotly and Pandas for public insights.</p>
+          <div class="pill-row"><span class="pill">EDA</span><span class="pill">Plotly</span><span class="pill">GeoViz</span></div>
+        </article>
+
+        <article class="project-card" data-tags="web">
+          <h3 class="title"><i class="fa-solid fa-graduation-cap"></i> Assessment Automation System (CarPar2) <span class="badge">TypeScript</span></h3>
+          <p class="desc">A modern web platform automating CLO/PLO assessment for universities with evaluator scoring and data exports.</p>
+          <div class="pill-row"><span class="pill">TypeScript</span><span class="pill">Web App</span><span class="pill">Education</span></div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 Pratosh Kannadasan</p>
+    </footer>
+  </main>
+
+  <!-- ✅ Working Filter + Search Script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const search = document.getElementById("proj-search");
+    const tagButtons = document.querySelectorAll("[data-filter]");
+    const cards = Array.from(document.querySelectorAll(".project-card"));
+    let activeTag = "all";
+
+    function filterProjects() {
+      const query = (search.value || "").toLowerCase();
+      cards.forEach(card => {
+        const haystack = (card.textContent || "").toLowerCase();
+        const tags = (card.dataset.tags || "").toLowerCase();
+        const tagMatch = activeTag === "all" || tags.includes(activeTag);
+        const textMatch = haystack.includes(query);
+        card.style.display = tagMatch && textMatch ? "" : "none";
+      });
+    }
+
+    search.addEventListener("input", filterProjects);
+
+    tagButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        tagButtons.forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+        activeTag = button.dataset.filter;
+        filterProjects();
+      });
+    });
+  });
+  </script>
+
+  <!-- 🔗 Step 3: shared data hook (safe no-op if you keep static cards) -->
+  <script src="projects-data.js"></script>
+  <script>
+    // If you later add a container with id="projects-list", the block below will
+    // auto-render from the shared data file. Otherwise it does nothing.
+    (function () {
+      const grid = document.getElementById('projects-list');
+      if (!grid || !window.PROJECTS) return;
+      grid.innerHTML = window.PROJECTS.map(p => `
+        <article class="project-card" id="${(p.link.split('#')[1]||p.title).toLowerCase()}">
+          <h3 class="title">${p.title}</h3>
+          <p class="desc">${p.desc}</p>
+          <div class="pill-row">${(p.tags||[]).map(t=>`<span class="pill">${t}</span>`).join('')}</div>
+        </article>
+      `).join('');
+    })();
+  </script>
+</body>
+</html>

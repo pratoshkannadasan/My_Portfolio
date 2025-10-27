@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awards • Pratosh</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* --- Reusable Page Header Style (Dark Gradient Banner) --- */
+.page-header {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f766e);
+  color: #fff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 6px 25px rgba(15, 23, 42, 0.4);
+  transition: background 0.8s ease;
+}
+
+/* Slight animated gradient shimmer on hover */
+.page-header:hover {
+  background: linear-gradient(135deg, #1e3a8a, #0f766e, #1e293b);
+}
+
+/* Title and subtitle spacing */
+.page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header h1 i {
+  font-size: 1.3rem;
+  color: #38bdf8;
+}
+
+.page-header p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  max-width: 60ch;
+  margin: 0;
+}
+
+    /* ---- Extras only for this page ---- */
+    .filters { display:flex; gap:.6rem; flex-wrap:wrap }
+    .input {
+      padding:.55rem .9rem; border:1px solid var(--line,#e5e7eb);
+      border-radius:10px; outline:none; font-size:.95rem;
+    }
+    .input:focus { border-color:#2556f0; box-shadow:0 0 0 3px rgba(37,86,240,.15) }
+
+    .list-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px }
+    .list-item {
+      background:var(--card,#fff);
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      cursor: default;
+      position: relative;
+    }
+    .list-item:hover {
+      transform: translateY(-6px);
+      box-shadow:0 14px 28px rgba(37,86,240,.18);
+      border-color: rgba(34,193,195,.35);
+    }
+    .list-item[data-img] { cursor: pointer; }
+    .list-item h3 { margin:.2rem 0 .35rem; font-weight:800; font-size:1.05rem }
+    .badge {
+      background:linear-gradient(180deg,#eef2ff,#e7ecff);
+      color:#2b3ca8;
+      border:1px solid rgba(43,60,168,.14);
+      border-radius:10px;
+      padding:2px 6px;
+      font-size:.78rem;
+      margin-left:.3rem;
+    }
+    .meta { color:#6b7280 }
+
+    /* Dean’s List box (aggregated link) */
+    .deans-box {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      background: linear-gradient(145deg, #ffffff, #f3f6ff);
+      border: 1px solid rgba(37,86,240,.18);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 12px 35px rgba(37,86,240,.12);
+    }
+    .deans-link {
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;
+      background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:14px 16px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .deans-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34,193,195,.35);
+      box-shadow: 0 12px 28px rgba(37,86,240,.18);
+    }
+    .deans-icon {
+      width: 46px; height: 46px; border-radius:12px; display:grid; place-items:center;
+      background: linear-gradient(135deg, #2556f0, #22c1c3); color:white; font-size:1.2rem;
+      box-shadow: 0 8px 20px rgba(37,86,240,.26);
+    }
+    .deans-title { font-weight:800; }
+    .deans-sub { color:#596072; }
+
+    /* Image modal */
+    .modal {
+      position: fixed; inset: 0; display: none;
+      background: rgba(10,16,28,.60);
+      z-index: 1000;
+      align-items: center; justify-content: center;
+      padding: 18px;
+      backdrop-filter: blur(4px);
+    }
+    .modal.open { display: flex; }
+    .modal-card {
+      position: relative;
+      max-width: min(900px, 92vw);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0b1324;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 30px 80px rgba(0,0,0,.45);
+      animation: flyIn .45s cubic-bezier(.22,.7,.24,1);
+    }
+    .modal-card img {
+      display:block; width:100%; height:auto; object-fit:contain; background:#0b1324;
+    }
+    .modal-close {
+      position:absolute; top:8px; right:8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff; width:36px; height:36px; border-radius:10px;
+      display:grid; place-items:center; cursor:pointer;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .modal-close:hover { transform: scale(1.05); background: rgba(255,255,255,.14) }
+
+    /* fly-in keyframes */
+    @keyframes flyIn {
+      from { transform: translateY(18px) scale(.96); opacity: .0; }
+      to   { transform: translateY(0)    scale(1);   opacity: 1;  }
+    }
+
+    @media (max-width:720px) {
+      .list-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script>
+    // Simple client-side filter for this static list
+    document.addEventListener('DOMContentLoaded', () => {
+      const search = document.getElementById('awards-search');
+      const yearSel = document.getElementById('awards-year');
+      const items = Array.from(document.querySelectorAll('.list-item'));
+
+      // Build year dropdown from data-year attributes
+      const years = [...new Set(items.map(it => it.dataset.year))].filter(Boolean).sort().reverse();
+      years.forEach(y => yearSel.appendChild(new Option(y, y)));
+
+      function draw(){
+        const q = (search.value || '').toLowerCase();
+        const y = yearSel.value;
+        items.forEach(it => {
+          const hay = (it.textContent || '').toLowerCase();
+          const yearOk = !y || it.dataset.year === y;
+          it.style.display = (hay.includes(q) && yearOk) ? '' : 'none';
+        });
+      }
+      search.addEventListener('input', draw);
+      yearSel.addEventListener('input', draw);
+
+      // Modal image viewer
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImg');
+      const closeBtn = document.getElementById('modalClose');
+
+      function openModal(src){
+        if(!src) return;
+        modalImg.src = src;
+        modal.classList.add('open');
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        modalImg.src = '';
+      }
+
+      document.addEventListener('click', (e) => {
+        const card = e.target.closest('.list-item[data-img]');
+        if(card){ openModal(card.dataset.img); }
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if(e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') closeModal();
+      });
+    });
+  </script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html">PK</a>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="active" href="awards.html"><i class="fa-solid fa-trophy"></i> Awards</a>
+      <a href="positions.html"><i class="fa-solid fa-users-gear"></i> Club Positions</a>
+      <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="skills.html"><i class="fa-solid fa-brain"></i> Skills</a>
+      <a href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="Pratosh_Kannadasan_Resume.pdf" class="btn primary" download>💼 Download CV</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="page-header">
+      <h1><i class="fa-solid fa-trophy"></i> Awards</h1>
+      <p class="meta">Do click to view solid proof of pictures.</p>
+      <div class="filters">
+        <input id="awards-search" class="input" placeholder="Search title, notes, level..."/>
+        <select id="awards-year" class="input">
+          <option value="">All Years</option>
+        </select>
+    </header>
+
+    <section class="list-grid" id="awards-list">
+      <!-- Dean's List aggregated box -->
+      <div class="deans-box">
+        <a class="deans-link" href="deans-timeline.html">
+          <div class="deans-icon"><i class="fa-solid fa-award"></i></div>
+          <div>
+            <div class="deans-title">Dean’s List — All Semesters</div>
+            <div class="deans-sub">View the full timeline of Dean’s List achievements (Faculty)</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 2025 -->
+      <article class="list-item" data-year="2025" data-img="tesis.png">
+        <h3>FINAL YEAR THESIS PITCHING COMPETITION 2025
+          <span class="badge">2025</span>
+          <span class="badge">FAKULTI</span>
+        </h3>
+        <p>BEST THESIS IN FINAL YEAR THESIS PITCHING COMPETITION 2025</p>
+      </article>
+
+      <!-- 2024 -->
+      <article class="list-item" data-year="2024" data-img="akpb.jpg">
+        <h3>ANUGERAH KECEMERLANGAN BADAN PELAJAR SESI 2023/2024
+          <span class="badge">2024</span>
+          <span class="badge">UNIVERSITI</span>
+        </h3>
+        <p>ANUGERAH BADAN PELAJAR PROGRAM SUKAN DAN REKREASI</p>
+      </article>
+
+      <article class="list-item" data-year="2024" data-img="topcoders.jpg">
+        <h3>TOP CODERS CODING CHALLENGE 2024
+          <span class="badge">2024</span>
+          <span class="badge">UNIVERSITI</span>
+        </h3>
+        <p>FIRST PLACE IN TOP CODERS MALAYSIA 2024</p>
+      </article>
+
+      <article class="list-item" data-year="2024" data-img="dss.png">
+        <h3>DEFENCE, SECURITY, AND SUSTAINABILITY EXHIBITION (DSS 2024)
+          <span class="badge">2024</span>
+          <span class="badge">UNIVERSITI</span>
+        </h3>
+        <p>BRONZE AWARD</p>
+      </article>
+
+      <!-- 2023 -->
+      <article class="list-item" data-year="2023" data-img="agni.jpg">
+        <h3>AGNI SIRAGUGAL POEM RECITATION COMPETITION 2023
+          <span class="badge">2023</span>
+          <span class="badge">KEBANGSAAN</span>
+        </h3>
+        <p>FIRST PLACE IN POEM RECITATION COMPETITION, AGNI SIRAGUGAL</p>
+      </article>
+    </section>
+
+    <footer class="footer"><p>© 2025 Pratosh Kannadasan</p></footer>
+  </main>
+
+  <!-- Image Modal -->
+  <div class="modal" id="imgModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <img id="modalImg" alt="Award image"/>
+    </div>
+  </div>
+</body>
+</html>

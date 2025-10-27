@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact • Pratosh Kannadasan</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    .contact-hero {
+      position: relative;
+      padding: 48px 10% 24px;
+      color: #fff;
+      background:
+        radial-gradient(1200px 400px at 10% -10%, rgba(37,86,240,.25), transparent 60%),
+        radial-gradient(800px 300px at 95% 0%, rgba(34,193,195,.25), transparent 60%),
+        linear-gradient(180deg, #0b1324 0%, #121a2e 60%, #0b1324 100%);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,.25);
+    }
+    .contact-hero h1 {
+      font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+      font-weight: 800;
+      margin: 0 0 6px;
+    }
+    .contact-hero p {
+      margin: 0;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* ---- Icon grid ---- */
+    .contact-wrap {
+      max-width: 1100px;
+      margin: 24px auto 32px;
+      padding: 0 12px;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .icon-card {
+      position: relative;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(0,0,0,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      color: #000;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(14, 30, 64, .25);
+    }
+    .icon-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34,193,195,.6);
+      box-shadow: 0 14px 40px rgba(37,86,240,.35);
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* Big circular icon with neon ring */
+    .icon-ring {
+      width: 110px;
+      height: 110px;
+      margin: 8px auto 12px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.18), rgba(255,255,255,.08));
+      position: relative;
+      isolation: isolate;
+    }
+    .icon-ring::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #2556f0, #22c1c3, #7ae3ff, #2556f0);
+      filter: blur(10px);
+      opacity: .75;
+      z-index: -1;
+      transition: opacity .25s ease, filter .25s ease;
+    }
+    .icon-card:hover .icon-ring::before {
+      filter: blur(14px);
+      opacity: 1;
+    }
+
+    .icon-ring i {
+      font-size: 44px;
+      color: #fff;
+    }
+    .icon-card h3 {
+      margin: 8px 0 4px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #000;
+    }
+    .icon-card p {
+      margin: 0;
+      color: #333;
+      font-size: .95rem;
+    }
+    .icon-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .icon-actions a,
+    .icon-actions button {
+      border: 1px solid rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.8);
+      color: #000;
+      border-radius: 999px;
+      padding: .5rem .85rem;
+      font-size: .9rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .icon-actions a:hover,
+    .icon-actions button:hover {
+      transform: translateY(-2px);
+      border-color: #22c1c3;
+      background: linear-gradient(90deg, #22c1c3, #2556f0);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(34,193,195,.35);
+    }
+
+    /* Details panel */
+    .details {
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .detail-card {
+      background: var(--card, #f7fafc);
+      border: 1px solid rgba(0,0,0,0.1);
+      color: #111;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .detail-card strong {
+      color: #2556f0;
+    }
+    .detail-card a {
+      color: #22c1c3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .detail-card a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 560px) {
+      .icon-ring { width: 96px; height: 96px; }
+      .icon-ring i { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html">PK</a>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="awards.html"><i class="fa-solid fa-trophy"></i> Awards</a>
+      <a href="positions.html"><i class="fa-solid fa-users-gear"></i> Club Positions</a>
+      <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="skills.html"><i class="fa-solid fa-brain"></i> Skills</a>
+      <a class="active" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="Pratosh_Kannadasan_Resume.pdf" class="btn primary" download>💼 Download CV</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section class="contact-hero">
+      <h1><i class="fa-solid fa-paper-plane"></i> Let’s Connect</h1>
+      <p>Open to collaborations, opportunities, and AI/Data Science problems. Prefer WhatsApp or email for fast response.</p>
+    </section>
+
+    <div class="contact-wrap">
+      <div class="icon-grid">
+        <article class="icon-card">
+          <div class="icon-ring"><i class="fa-solid fa-envelope"></i></div>
+          <h3>Email</h3>
+          <p>pratosh2140@gmail.com</p>
+          <div class="icon-actions">
+            <a href="mailto:pratosh2140@gmail.com" title="Send email">Send</a>
+            <button id="copyEmail" type="button" title="Copy email">Copy</button>
+          </div>
+        </article>
+
+        <article class="icon-card">
+          <div class="icon-ring"><i class="fa-brands fa-linkedin"></i></div>
+          <h3>LinkedIn</h3>
+          <p>Professional network</p>
+          <div class="icon-actions">
+            <a href="https://linkedin.com/in/pratoshkannadasan" target="_blank">Open</a>
+          </div>
+        </article>
+
+        <article class="icon-card">
+          <div class="icon-ring"><i class="fa-brands fa-github"></i></div>
+          <h3>GitHub</h3>
+          <p>Projects & code</p>
+          <div class="icon-actions">
+            <a href="https://github.com/pratoshkannadasan" target="_blank">Open</a>
+          </div>
+        </article>
+
+        <article class="icon-card">
+          <div class="icon-ring"><i class="fa-brands fa-instagram"></i></div>
+          <h3>Instagram</h3>
+          <p>@pratosh_erenyeager</p>
+          <div class="icon-actions">
+            <a href="https://www.instagram.com/pratosh_erenyeager" target="_blank">Open</a>
+          </div>
+        </article>
+
+        <article class="icon-card">
+          <div class="icon-ring"><i class="fa-brands fa-whatsapp"></i></div>
+          <h3>WhatsApp</h3>
+          <p>+60 11-6050 5097</p>
+          <div class="icon-actions">
+            <a href="https://wa.me/601160505097" target="_blank">Message</a>
+          </div>
+        </article>
+      </div>
+
+    <footer class="footer"><p>© 2025 Pratosh Kannadasan</p></footer>
+  </main>
+
+  <script>
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('pratosh2140@gmail.com');
+        const btn = document.getElementById('copyEmail');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = original, 1200);
+      } catch {
+        alert('Could not copy. Please copy manually: pratosh2140@gmail.com');
+      }
+    });
+  </script>
+</body>
+</html>
